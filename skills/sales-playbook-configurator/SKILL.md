@@ -39,12 +39,15 @@ If not already provided, ask these 5 questions in one concise batch (if partial 
 2. **Who is on the buying committee, and how long is the sales cycle?**
 3. **What is the primary motion?** (Inbound, outbound, partner-led, founder-led, enterprise)
 4. **What is your #1 sales bottleneck right now?** (e.g., pitching too early, happy ears / stalled Stage 1, losing to status quo, late-stage procurement surprises, inconsistent rep execution)
-5. **What is your core positioning/story that every rep must land, and do you have any existing methodology or CRM stages?**
+5. **What is your core positioning/story that every rep must land, and do you have an existing methodology, internal playbook doc, or CRM stages?** (You can choose a built-in methodology, name another vetted framework such as SPICED, SPIN, or Miller Heiman, or paste/attach your own internal methodology.)
 
 ### Workflow
 1. Read `references/methodologies-reference.md`.
-2. Select 1 primary methodology (or a tight 2-part hybrid) + **Science of Sales (Roberge)** coaching overlay. Explain why it fits their bottleneck better than the alternatives.
-3. Generate `sales-playbook-config.yaml` using the schema below.
+2. Resolve the methodology source:
+   - **Built-in:** Select 1 primary methodology (or a tight 2-part hybrid) + **Science of Sales (Roberge)** coaching overlay.
+   - **User-Supplied / Internal Playbook:** Extract the team's own stages, messaging beats, qualification criteria, and anti-patterns directly into the config schema without overwriting their terminology.
+   - **Other Vetted Methodology (e.g., SPICED, SPIN, Miller Heiman):** Map its core mechanics into `scoring_rubric` and `qualification_gates`, and state the mapped mechanics explicitly for confirmation.
+3. Explain why the chosen setup fits their bottleneck, then generate `sales-playbook-config.yaml` using the schema below.
 
 ---
 
@@ -92,9 +95,10 @@ deal_profile:
   primary_motion: "<inbound | outbound | hybrid | enterprise>"
 
 methodology:
-  primary: "<Sandler | Force Management | MEDDPICC | Value-Based Selling | Challenger | Gap Selling | Blair Enns Four Conversations>"
+  primary: "<Sandler | Force Management | MEDDPICC | Value-Based Selling | Challenger | Gap Selling | Blair Enns Four Conversations | Custom / Internal | Other Vetted (<Name>)>"
   secondary_overlay: "<optional second lens, e.g. Stark Why Conversation>"
   coaching_framework: "Science of Sales (Roberge)"
+  custom_source: "<optional: path/title of internal playbook or external framework used>"
 
 positioning_criteria: # Scored 0-100% adherence separately from general discovery skill
   core_narrative: "<1-2 sentence positioning/value thesis the rep must land>"
