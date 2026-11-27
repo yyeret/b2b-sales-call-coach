@@ -1,0 +1,21 @@
+{
+  "name": "b2b-sales-call-coach",
+  "version": "1.0.0",
+  "description": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
+  "author": {
+    "name": "Yeret Agility",
+    "url": "https://github.com/yyeret"
+  },
+  "homepage": "https://github.com/yyeret/b2b-sales-call-coach",
+  "repository": "https://github.com/yyeret/b2b-sales-call-coach",
+  "license": "MIT",
+  "keywords": [
+    "sales",
+    "b2b-sales",
+    "discovery",
+    "call-coaching",
+    "meddpicc",
+    "sandler",
+    "challenger"
+  ]
+}

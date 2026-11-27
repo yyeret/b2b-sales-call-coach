@@ -1,0 +1,31 @@
+{
+  "name": "yeret-sales-tools",
+  "interface": {
+    "displayName": "Yeret Sales Tools",
+    "shortDescription": "Methodology-grounded B2B sales playbook configurator and call inspection skills."
+  },
+  "plugins": [
+    {
+      "name": "b2b-sales-call-coach",
+      "version": "1.0.0",
+      "description": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Sales",
+      "tags": [
+        "b2b-sales",
+        "call-coaching",
+        "discovery",
+        "meddpicc",
+        "sandler",
+        "challenger"
+      ]
+    }
+  ]
+}

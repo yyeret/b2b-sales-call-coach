@@ -1,0 +1,29 @@
+{
+  "name": "b2b-sales-call-coach",
+  "version": "1.0.0",
+  "description": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
+  "author": {
+    "name": "Yeret Agility",
+    "url": "https://github.com/yyeret"
+  },
+  "homepage": "https://github.com/yyeret/b2b-sales-call-coach",
+  "repository": "https://github.com/yyeret/b2b-sales-call-coach",
+  "license": "MIT",
+  "keywords": [
+    "sales",
+    "b2b-sales",
+    "discovery",
+    "call-coaching",
+    "meddpicc",
+    "sandler",
+    "challenger"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "B2B Sales Call Coach",
+    "shortDescription": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
+    "longDescription": "Configure a B2B sales methodology (Sandler, Force Management, MEDDIC/MEDDPICC, Value-Based Selling, Challenger, Gap Selling, Science of Sales, Blair Enns Four Conversations, Jonathan Stark Why Conversation) and inspect call transcripts for rep posture, positioning adherence, deal-quality signals beyond CRM stages, and compounding revenue-machine improvements.",
+    "developerName": "Yeret Agility",
+    "category": "Sales"
+  }
+}

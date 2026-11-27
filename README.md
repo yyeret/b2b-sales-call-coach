@@ -10,6 +10,36 @@ Designed for B2B sales leaders, RevOps, and sales reps who want their team to:
 
 ---
 
+## Install
+
+### Claude Code / Cowork / Claude Desktop
+
+```text
+/plugin marketplace add yyeret/b2b-sales-call-coach
+/plugin install b2b-sales-call-coach@yeret-sales-tools
+```
+
+Installed skills are available as `/b2b-sales-call-coach:sales-playbook-configurator` and `/b2b-sales-call-coach:sales-call-analyzer`.
+
+### ChatGPT / Codex
+
+From a local checkout, Codex picks up `.agents/plugins/marketplace.json` automatically (run `codex /plugins` to browse/enable), or copy `skills/*` into `$CODEX_HOME/skills` or `$HOME/.agents/skills`.
+
+### ChatGPT Projects / Claude Projects (No CLI)
+
+Create a Project and upload these three files as Project Knowledge:
+- `skills/sales-playbook-configurator/SKILL.md`
+- `skills/sales-playbook-configurator/references/methodologies-reference.md`
+- `skills/sales-call-analyzer/SKILL.md`
+
+### Plain Clone
+
+```bash
+git clone https://github.com/yyeret/b2b-sales-call-coach.git
+```
+
+---
+
 ## What's Inside
 
 1. **[`sales-playbook-configurator`](skills/sales-playbook-configurator/SKILL.md)** — Choose, bootstrap, and calibrate your team's methodology:
@@ -31,23 +61,13 @@ Designed for B2B sales leaders, RevOps, and sales reps who want their team to:
 
 ## Quickstart (3 Steps)
 
-### Works in Claude Code, Codex, Antigravity, Cursor, or ChatGPT Projects
-
-1. **Configure your playbook**
-   - Load `skills/sales-playbook-configurator/SKILL.md` (plus `references/methodologies-reference.md`).
-   - Answer the 5 short discovery questions (or paste 3–10 raw call transcripts to bootstrap from reality).
-   - Save the generated `sales-playbook-config.yaml`.
-
-2. **Analyze calls**
-   - Load `skills/sales-call-analyzer/SKILL.md`.
-   - Paste your `sales-playbook-config.yaml` + a call transcript (Zoom, Gong, Fathom, Granola, Teams).
-   - Get a 60-second inspection report: **how the rep showed up**, **deal-quality reality**, **Advance / Nurture / Disqualify verdict**, **1 coaching habit + rewrites**, and **system-level improvements**.
-
-3. **Calibrate recursively (monthly or bi-weekly)**
-   - Feed 5–10 scored calls with their actual outcomes back into `sales-playbook-configurator` (Mode C) to update your positioning, MQL/SQL gates, and coaching focus from what actually converts in the field.
+1. **Configure your playbook:** Run `sales-playbook-configurator` (answer 5 short questions, or paste 3–10 raw transcripts to bootstrap from reality) and save `sales-playbook-config.yaml`.
+2. **Analyze calls:** Run `sales-call-analyzer` with your `sales-playbook-config.yaml` + any call transcript (Zoom, Gong, Fathom, Granola, Teams).
+3. **Calibrate recursively:** Periodically feed 5–10 scored calls with their actual outcomes back into `sales-playbook-configurator` (Mode C) to update your positioning, MQL/SQL gates, and coaching focus from what actually converts in the field.
 
 ---
 
-## License
+## License & Trademark Attribution
 
-MIT — see [LICENSE](LICENSE).
+- **License:** MIT — see [LICENSE](LICENSE). All skill instructions, rubrics, and configuration schemas in this repository are original works.
+- **Trademarks:** Referenced commercial methodologies and trademarks (including Sandler®, Force Management® / Command of the Message®, MEDDIC / MEDDPICC, Challenger™, Gap Selling, and Win Without Pitching®) belong to their respective owners. This repository is an independent operational implementation and is not affiliated with, sponsored by, or endorsed by those organizations.
