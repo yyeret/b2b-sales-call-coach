@@ -1,12 +1,12 @@
 ---
 name: sales-call-analyzer
-description: Inspect a B2B sales or discovery call transcript as a system of inspection — evaluating how the rep showed up (Peer/Advisor vs. Vendor, Blair Enns Four Conversations, Stark Why Conversation), positioning adherence, deal-quality signals beyond CRM stages, and compounding improvements to the revenue machine (pre-call context, prep, coaching, script/deck, MQL/SQL definitions). Use when reviewing a call transcript, coaching a rep, or deciding whether to advance, nurture, or disqualify a deal.
+description: Classify a transcript's sales eligibility and conversation stage before coaching. Stop on non-sales or insufficient evidence; inspect confirmed B2B sales conversations for rep posture, stage-appropriate qualification, positioning and next steps. Use when screening recordings, reviewing a sales call or coaching a rep.
 metadata:
   origin: original
   brand: utility
   publish: shareable
   tags: outreach-sales, sales-enablement
-  version: 1.1.0
+  version: 1.2.0
 ---
 
 # Sales Call Analyzer
@@ -17,6 +17,7 @@ Act as a **system of inspection** for B2B sales conversations so the sales force
 
 ## Outcome Indicators
 
+- Every transcript passes an evidence-backed sales-eligibility and stage gate before scoring. Non-sales and insufficient-evidence recordings receive no sales coaching.
 - Every qualification claim is backed by a verbatim transcript quote or explicitly flagged as **Unverified / Rep Inference**.
 - Separates **Positioning Adherence (0–100%)** from **Methodology & Posture Score (0–100)** so teams can calibrate adherence against conversion.
 - Inspects **real deal-quality signals** (buyer seniority, multi-threading, sensitive info shared, champion tested) rather than trusting CRM stage labels.
@@ -34,11 +35,18 @@ Act as a **system of inspection** for B2B sales conversations so the sales force
 
 ## Workflow
 
+0. **Classify Before Coaching — Required Gate:**
+   - Read the conversation before selecting a sales rubric. Decide **Sales motion**, **Not a sales motion**, or **Insufficient evidence**, with confidence (high / medium / low), speaker-role evidence and 1–3 short transcript quotes. Use timestamps when supplied; never invent them. Titles, CRM stages, recording presence and external attendees are hints, not proof of sales intent.
+   - A sales motion explores, evaluates or commits to buying, renewing or expanding the seller's offering. This includes existing-account discovery and staffing/services qualification. Delivery kickoffs, project/status reviews, support, internal pipeline meetings and candidate interviews are not sales merely because a customer or salesperson attends. An explicit commercial segment in a mixed call can qualify; identify its boundaries and coach only that segment.
+   - **Not a sales motion: stop.** Return only the classification, evidence and a brief reason sales coaching does not apply. Do not generate sales scores, qualification gaps, a deal verdict or a sales follow-up.
+   - **Insufficient evidence: stop.** State what cannot be determined and the minimum missing context or transcript needed. Do not turn ambiguous or very short recordings into sales calls, and do not treat unknown intent as confirmed non-sales.
+   - For a confirmed sales motion, identify the **motion** (new business / existing-account expansion / renewal / other evidenced motion) and the **conversation stage** (introduction / discovery and qualification / solution or technical evaluation / business case and proposal / negotiation and decision). Name primary and secondary stages when mixed, and distinguish observed conversation stage from an unverified CRM deal stage. If stage is unclear, report that uncertainty without assigning stage-dependent scores or a deal verdict; request only the context needed to resolve it.
+   - Select the **stage's intended progress** before scoring. An introduction should establish relevance and permission to explore; discovery should clarify need, urgency and fit; technical evaluation should test requirements and acceptance; a proposal should connect value, scope and buying process; negotiation should resolve terms and enable a decision. Assess renewal/expansion against the actual conversation stage. Do not penalize an introductory call for missing a complete budget or procurement map, or a technical review for failing to repeat discovery already completed elsewhere. Mark facts absent from this transcript as unverified, not absent from the whole deal.
 1. **Load Lens:**
    - If a `sales-playbook-config.yaml` or **user-supplied methodology doc** is provided, use its exact criteria, positioning beats, and disqualifiers as the primary scoring rubric.
    - If a built-in methodology is named, read `../sales-playbook-configurator/references/methodologies-reference.md`.
    - If another vetted methodology is named (e.g., SPICED, SPIN), score against its established mechanics and state the criteria used at the top of the report.
-   - Otherwise use the Balanced B2B Discovery Baseline.
+   - Otherwise use the Balanced B2B Discovery Baseline as the source of criteria, adapted to the observed conversation stage. State the criteria and weights used; do not imply that provisional weights are the team's approved rubric.
 2. **Inspect How the Rep Showed Up (Posture & Conversation Stewardship):**
    - **Posture:** **Peer/Trusted Advisor** (equal stature, curious, willing to disqualify) vs. **Vendor/Feature-Dumper** (chasing, over-explaining, pitching prematurely).
    - **Conversation Discipline (Blair Enns):** Did the rep stay in the right conversation (*Probabilistic → Qualifying → Value → Closing*), or jump straight into pitching/proposing before earning it?
@@ -47,15 +55,16 @@ Act as a **system of inspection** for B2B sales conversations so the sales force
    - **Buyer Autonomy vs. Pressure:** Did the rep make it safe to say "no" or use pressure/happy-talk?
    - **Friction & Anti-Patterns:** Flag moments where the rep triggered defensiveness, gave away free consulting, or talked past a buying signal.
 3. **Score Positioning Adherence & Methodology Rubric:**
-   - **Positioning Adherence (0–100%):** How accurately and naturally did the rep land the team's `positioning_criteria` (e.g., 20% vs. 80% right)?
-   - **Methodology Scorecard:** Score each criterion in `scoring_rubric` (1–5) with verbatim **Confirmed Evidence** vs. **Gaps / Rep Assumptions**.
+   - **Positioning Adherence (0–100%):** How accurately and naturally did the rep land the team's supplied `positioning_criteria`? Without those criteria, report **Not scored — positioning rubric not supplied**; do not invent company positioning from one call.
+   - **Methodology Scorecard:** Score applicable, observable criteria in `scoring_rubric` (1–5) with verbatim **Confirmed Evidence** vs. **Gaps / Rep Assumptions**. Mark stage-inappropriate criteria **N/A** and behavior unavailable in the supplied transcript **Not assessed**; exclude both from the denominator and state the remaining scoring basis. An observed missed question may be a coaching gap; a buyer-only excerpt is not evidence of rep failure. Score only the eligible commercial segment of a mixed call. If no criteria can be assessed, report no aggregate score or rep-posture judgment.
 4. **Inspect Deal-Quality Signals (Beyond CRM Stages) & Stakeholder Energies:**
    - **Deal-Quality Signals:** Check **Buyer Seniority**, **Multi-Threading** (multiple buyer roles engaged), **Sensitive Info Shared** (budget, internal metrics, org politics, hard deadlines), and **Champion Tested** (did the rep ask the champion to take an internal action?).
    - **Stakeholder Read:** Classify **Champion**, **Hedger**, **Resister**, and **Economic Buyer** status.
 5. **Issue Deal Verdict (Speed to Right Outcome):**
-   - **Advance:** Verified pain/urgency + deal-quality signals + booked next step with decision owner.
+   - **Advance:** Evidence supports the next stage-appropriate step and a mutually agreed next action with an owner and date. Later commercial stages also need the corresponding buying/decision-owner evidence; a rep's promise to search, send or follow up is not buyer commitment.
+   - **Hold / Continue qualification:** A credible sales motion exists, but the evidence or agreed next step needed to advance is missing. Name the smallest qualification checkpoint that would resolve it. Do not force an urgent but incompletely qualified opportunity into Nurture or Disqualify.
    - **Nurture:** Real fit, but no live urgency — name the exact trigger and date to re-engage.
-   - **Disqualify:** Misfit, no urgent project, or blocked access — recommend a fast, respectful close-out to stop wasting rep time.
+   - **Disqualify:** Confirmed misfit or a disqualifying constraint for this motion — recommend a fast, respectful close-out. Missing or unasked qualification evidence is not proof of misfit; lack of live urgency with real fit belongs under Nurture.
 6. **Compound the Revenue Machine (Post-Meeting System Upgrades):**
    Ask: *What should change in the system — not just this rep — based on this call?*
    - **Pre-Meeting Context:** What account/buyer/intent context would have helped the rep before the call?
@@ -67,17 +76,25 @@ Act as a **system of inspection** for B2B sales conversations so the sales force
 
 ## Output Format
 
+### 0. Eligibility and stage
+- **Sales eligibility:** `Sales motion` | `Not a sales motion` | `Insufficient evidence`
+- **Confidence and evidence:** `<confidence, speaker-role basis, 1–3 quotes with available timestamps>`
+- **Motion / conversation stage:** `<for eligible calls; distinguish from CRM stage>`
+- **Stage-appropriate objective / analyzed segment:** `<what progress this call should enable; segment boundaries if mixed>`
+
+For non-sales or insufficient-evidence recordings, end here. If sales eligibility is confirmed but stage is unresolved, state the missing stage context here and stop before scoring. The remaining sections apply only after both gates pass.
+
 ### 1. Call Snapshot & Verdict
 - **Methodology Lens:** `<Active config or Default Baseline>`
 - **Call Stage / Conversation Type:** `<e.g. Discovery — Blair Enns Qualifying>`
-- **Positioning Adherence:** `<X%>` | **Methodology Score:** `<Y / 100>`
-- **Rep Posture:** `Peer/Advisor` | `Mixed` | `Vendor/Feature-Dumper`
-- **Deal Verdict:** `Advance` | `Nurture` | `Disqualify` — *1-sentence rationale.*
+- **Positioning Adherence:** `<X% or Not scored — rubric not supplied>` | **Methodology Score:** `<Y / 100 with scoring basis, or Not assessed — insufficient observable behavior>`
+- **Rep Posture:** `Peer/Advisor` | `Mixed` | `Vendor/Feature-Dumper` | `Not assessed`
+- **Deal Verdict:** `Advance` | `Hold / Continue qualification` | `Nurture` | `Disqualify` — *1-sentence rationale tied to the observed stage.*
 
 ### 2. How the Rep Showed Up
 - **Talk / Listen & Question Depth:** `<Estimate + observation>`
-- **What Worked (Keep Doing):** 2–3 specific moments with quotes.
-- **Anti-Patterns & Friction Moments:** 2–3 specific moments where posture slipped, pitching happened too early, or a signal was missed.
+- **What Worked (Keep Doing):** Up to 3 observable moments with quotes; omit or mark Not assessed when unsupported.
+- **Anti-Patterns & Friction Moments:** Up to 3 observable moments where posture slipped, pitching happened too early, or a signal was missed; do not fill a quota when evidence is unavailable.
 - **Stakeholder Read:** Champion / Hedger / Resister / Economic Buyer status.
 
 ### 3. Deal-Quality Signals (Beyond CRM Stage)
@@ -105,6 +122,8 @@ Act as a **system of inspection** for B2B sales conversations so the sales force
 
 ## Guardrails
 
+- **Eligibility precedes coaching.** A supplied methodology or an explicit request to score does not bypass the non-sales / insufficient-evidence stop. Do not mistake a call that discusses the buyer's sales process for a sales motion for the seller's offering.
+- **Judge the observed stage.** Missing late-stage evidence is not automatically an early-stage rep failure; distinguish a follow-up question from a reason to downgrade the call.
 - **Never fabricate quotes, metrics, or commitments.** Mark unverified claims `[Unverified]`.
 - **Do not soften a bad call.** Call out premature pitching, happy ears, or vague endings plainly.
 - **Never overload the rep.** Cap coaching rewrites at 3 and name 1 primary habit for the next call.

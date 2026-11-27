@@ -48,6 +48,7 @@ git clone https://github.com/yyeret/b2b-sales-call-coach.git
    - **Mode C (Recursive Calibration — Adherence × Outcome 2×2):** Compare Positioning Adherence % against conversion outcomes to separate *rep coaching gaps* (low adherence + stalled) from *field breakthroughs* (low adherence + won → upgrade the playbook) and *broken scripts* (high adherence + stalled).
 
 2. **[`sales-call-analyzer`](skills/sales-call-analyzer/SKILL.md)** — Inspect any call transcript against your playbook:
+   - **Eligibility and stage first:** identify whether the conversation belongs to a sales motion, stop for non-sales or insufficient evidence, and assess eligible calls against their observed stage. Mixed calls are coached only on their commercial segment.
    - **How the Rep Showed Up:** Peer/Trusted Advisor vs. Vendor/Feature-Dumper, Blair Enns conversation discipline, Stark Why Conversation, talk/listen & question depth, buyer autonomy vs. pressure, friction/anti-patterns.
    - **Positioning Adherence (0–100%)** + **Methodology Scorecard (Evidence vs. Inference)** with verbatim quotes.
    - **Deal-Quality Signals Beyond CRM Stages:** Buyer seniority, multi-threading, sensitive info shared, champion tested, and stakeholder read (Champion / Hedger / Resister / Economic Buyer).
@@ -62,7 +63,7 @@ git clone https://github.com/yyeret/b2b-sales-call-coach.git
 ## Quickstart (3 Steps)
 
 1. **Configure your playbook:** Run `sales-playbook-configurator` (answer 5 short questions, or paste 3–10 raw transcripts to bootstrap from reality) and save `sales-playbook-config.yaml`.
-2. **Analyze calls:** Run `sales-call-analyzer` with your `sales-playbook-config.yaml` + any call transcript (Zoom, Gong, Fathom, Granola, Teams).
+2. **Screen, then analyze:** Run `sales-call-analyzer` with your `sales-playbook-config.yaml` + a transcript (Zoom, Gong, Fathom, Granola, Teams). It classifies sales eligibility and stage first; non-sales recordings stop before coaching.
 3. **Calibrate recursively:** Periodically feed 5–10 scored calls with their actual outcomes back into `sales-playbook-configurator` (Mode C) to update your positioning, MQL/SQL gates, and coaching focus from what actually converts in the field.
 
 ---
