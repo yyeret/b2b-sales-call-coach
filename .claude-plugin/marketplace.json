@@ -12,7 +12,7 @@
       "name": "b2b-sales-call-coach",
       "source": "./",
       "description": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "sales",
       "tags": [
         "b2b-sales",

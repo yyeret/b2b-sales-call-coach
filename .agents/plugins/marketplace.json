@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "b2b-sales-call-coach",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Methodology-grounded B2B sales playbook configurator and call inspection system for sales teams.",
       "source": {
         "source": "local",
