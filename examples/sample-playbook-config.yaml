@@ -1,0 +1,79 @@
+playbook_name: "Mid-Market B2B Consultative SaaS"
+version: "1.0"
+
+deal_profile:
+  acv_range: "$25K-$75K"
+  sales_cycle: "45-90 days"
+  buying_committee: "2-4 stakeholders (VP/Director + Ops/IT + Finance)"
+  primary_motion: "hybrid (inbound + targeted outbound)"
+
+methodology:
+  primary: "Sandler"
+  secondary_overlay: "Value-Based Selling + Stark Why Conversation"
+  coaching_framework: "Science of Sales (Roberge)"
+
+positioning_criteria:
+  core_narrative: "Eliminate manual operational bottlenecks and forecast blind spots without ripping out existing systems."
+  required_beats:
+    - "Name the hidden cost of the current manual workaround"
+    - "Anchor to a measurable 90-day business outcome"
+    - "Differentiate on time-to-value rather than feature checklists"
+
+lead_definitions:
+  mql_criteria: "Director+ or budget-influencing role at target-ICP company (50-1000 employees) with an active operational trigger."
+  sql_criteria: "Verified business pain, articulated 'Why Now' urgency, and agreed path to decision-maker within 60 days."
+
+call_stages:
+  - name: "Discovery"
+    conversation_type: "Blair Enns: Probabilistic -> Qualifying"
+    goal: "Verify pain, urgency, and decision path — or disqualify fast."
+    target_talk_listen_ratio: "35-45% rep / 55-65% buyer"
+  - name: "Value & Solution Alignment"
+    conversation_type: "Blair Enns: Value Conversation"
+    goal: "Co-create ROI math and align on options before sending a proposal."
+    target_talk_listen_ratio: "45-55% rep / 45-55% buyer"
+
+deal_quality_signals:
+  - "Buyer seniority (Director/VP/C-level vs. non-decider)"
+  - "Multi-threading (2+ buyer roles engaged)"
+  - "Sensitive info shared (budget, internal metrics, org politics, hard deadlines)"
+  - "Champion tested (agreed to take an internal action)"
+
+scoring_rubric:
+  - id: "posture_and_control"
+    label: "Peer/Advisor Posture & Conversation Discipline"
+    weight: 20
+    what_good_looks_like: "Sets Up-Front Contract, maintains equal stature, avoids premature pitching."
+    anti_pattern: "Jumps into demo/pitch in the first 10 minutes or chases polite interest."
+  - id: "pain_and_why"
+    label: "Pain Funnel & Why Conversation"
+    weight: 25
+    what_good_looks_like: "Goes 2-3 layers deep on business impact; uncovers Why this, Why now, Why not do nothing."
+    anti_pattern: "Accepts surface symptoms ('we want to be more efficient') without quantifying impact."
+  - id: "qualification_and_deal_quality"
+    label: "Qualification Rigor & Deal-Quality Signals"
+    weight: 25
+    what_good_looks_like: "Verifies decision process, authority, and tests champion with an internal ask."
+    anti_pattern: "Treats a friendly user as an Economic Buyer without checking."
+  - id: "value_and_positioning"
+    label: "Positioning & Co-Created Value"
+    weight: 15
+    what_good_looks_like: "Lands core narrative using buyer's own numbers and language."
+    anti_pattern: "Generic feature walkthrough or premature discounting."
+  - id: "next_step_or_disqualify"
+    label: "Fast, Clean Outcome (Advance or Disqualify)"
+    weight: 15
+    what_good_looks_like: "Books next step on calendar with clear agenda & stakeholders, OR disqualifies cleanly."
+    anti_pattern: "Ends with 'send me some info' or 'let's touch base in a few weeks.'"
+
+qualification_gates:
+  advance_requires:
+    - "Verified business pain with quantified impact or clear Cost of Inaction"
+    - "Known decision process or next step involving decision owner"
+  disqualify_triggers:
+    - "Pure curiosity with no urgency or project owner"
+    - "Refusal to discuss impact, budget reality, or decision path"
+
+coaching_cadence:
+  focus_rule: "Pick 1 high-leverage behavior per rep per week (Roberge)."
+  evidence_rule: "Separate verbatim buyer quotes from rep inference."
